@@ -1,3 +1,145 @@
-<h1>Este es un sitio web con Github Pages</h1>
-<p>Y fue creado con amor para el Curso de Git y Github de Platzi</p>
-<p><img src="https://i.imgur.com/PfA0M2o.gif"></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yes/No Question Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f5f5f5;
+    }
+
+    .question-form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .question {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .options {
+      display: flex;
+    }
+
+    .option {
+      margin-right: 10px;
+    }
+
+    .option input[type="radio"] {
+      display: none;
+    }
+
+    .option label {
+      cursor: pointer;
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: #e0e0e0;
+    }
+
+    .option input[type="radio"]:checked + label {
+      background-color: #4caf50;
+      color: #fff;
+    }
+
+    .video-container {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .video-container video {
+      max-width: 100%;
+    }
+
+    .confirmation-question {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .confirmation-question button {
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="question-form">
+  <div class="question">¿Quieres ser mi san valentín?</div>
+  <div class="options">
+    <div class="option">
+      <input type="radio" id="yes" name="agree" value="yes">
+      <label for="yes">Sí!</label>
+    </div>
+    <div class="option">
+      <input type="radio" id="no" name="agree" value="no">
+      <label for="no">No</label>
+    </div>
+  </div>
+  <div class="video-container" id="videoContainer">
+    <video controls>
+      <source src="lindo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="video-container" id="alternativeVideoContainer" style="display:none;">
+    <video controls>
+      <source src="haha.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="confirmation-question" id="confirmationQuestion">
+    <p>¿Estás segura que no quieres?</p>
+    <button id="noConfirmation">La verdad sí quiero!!</button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const yesRadio = document.getElementById("yes");
+    const noRadio = document.getElementById("no");
+    const videoContainer = document.getElementById("videoContainer");
+    const alternativeVideoContainer = document.getElementById("alternativeVideoContainer");
+    const confirmationQuestion = document.getElementById("confirmationQuestion");
+    const noConfirmationButton = document.getElementById("noConfirmation");
+
+    yesRadio.addEventListener("change", function() {
+      if (yesRadio.checked) {
+        videoContainer.style.display = "block";
+        alternativeVideoContainer.style.display = "none";
+        confirmationQuestion.style.display = "none";
+      }
+    });
+
+    noRadio.addEventListener("change", function() {
+      if (noRadio.checked) {
+        videoContainer.style.display = "none";
+        alternativeVideoContainer.style.display = "none";
+        confirmationQuestion.style.display = "block";
+      }
+    });
+
+    noConfirmationButton.addEventListener("click", function() {
+      videoContainer.style.display = "none";
+      alternativeVideoContainer.style.display = "block";
+      confirmationQuestion.style.display = "none";
+    });
+  });
+</script>
+
+</body>
+</html>
